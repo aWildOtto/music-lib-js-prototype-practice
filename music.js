@@ -12,16 +12,6 @@ function Playlist (name) {
   this.totalDuration = 0;
   this.overallRating = 0;
 
-  this.getTotalDuration = function(){
-    return this.tracks.reduce((sum, value)=>{
-      return sum + value.length;
-    },0);
-  }
-  this.getOverallRating = function(){
-    return this.tracks.reduce((sum, value)=>{
-      return sum + value.rating;
-    },0);
-  }
 }
 
 function Track (title, rating, length) {
@@ -38,6 +28,18 @@ Playlist.prototype.addTrack = function(track) {
   this.tracks.push(track);
   this.totalDuration += track.length;
   this.overallRating += track.rating;
+}
+
+Playlist.prototype.getTotalDuration = function(){
+  return this.tracks.reduce((sum, value)=>{
+    return sum + value.length;
+  },0);
+}
+
+Playlist.prototype.getOverallRating = function(){
+  return this.tracks.reduce((sum, value)=>{
+    return sum + value.rating;
+  },0);
 }
 
 
